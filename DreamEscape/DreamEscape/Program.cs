@@ -34,14 +34,14 @@ internal class Program
             switch (choice)
             {
                 case "1":
-                    //Instruction();
+                    Instruction();
                     //StartNewGame();
                     break;
                 case "2":
                     //LoadGame();
                     break;
                 case "3":
-                    //Instruction();
+                    Instruction();
                     break;
                 case "4":
                     Running = false;
@@ -53,4 +53,34 @@ internal class Program
             }
         }
     }
+
+    //Instructions
+    static void Instruction()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Instructions");
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine("------------------------");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("You are trapped in your dreams...");
+        Console.WriteLine("You need to find a way to escape.. or stay..");
+        Console.WriteLine("\nControls:");
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine("------------------------");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("Enter - Continue story");
+        Console.WriteLine("1 2 3 - Choices");
+        Console.WriteLine("S - Save Game");
+        Console.WriteLine("G - Load Game");
+        Console.WriteLine("H - Help");
+        Console.WriteLine("F - hint");
+        Console.WriteLine("Q - quit");
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine("------------------------");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Press any key to return to menu...");
+        Console.ReadKey();
+    }
+
 }
