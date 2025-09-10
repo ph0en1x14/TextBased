@@ -44,7 +44,7 @@ internal class Program
                     StartNewGame();
                     break;
                 case "2":
-                    //LoadGame();
+                    LoadGame();
                     break;
                 case "3":
                     Instruction();
@@ -227,12 +227,12 @@ internal class Program
     {
         if (choice == "s")
         {
-            //SaveGame();
+            SaveGame();
             return;
         }
         if (choice == "g")
         {
-            //LoadGame();
+            LoadGame();
             return;
         }
         if (choice == "h")
@@ -441,5 +441,75 @@ internal class Program
         }
 
         Console.ReadKey();
+    }
+
+    //Save game
+    static void SaveGame()
+    {
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(saveFile))
+            {
+                writer.WriteLine(dreamStage);
+                writer.WriteLine(dream1Progress);
+                writer.WriteLine(string.Join(",", inventory));
+            }
+            Console.WriteLine("Game saved successfully!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred while saving: {ex.Message}");
+        }
+        Console.ReadKey();
+    }
+
+    //Load game
+    static void LoadGame()
+    {
+        if (File.Exists(saveFile))
+        {
+            try
+            {
+                string[] data = File.ReadAllLines(saveFile);
+                if (data.Length >= 3)
+                {
+                    if (int.TryParse(data[0], out int loadedStage) && int.TryParse(data[1], out int loadedProgress))
+                    {
+                        dreamStage = loadedStage;
+                        dream1Progress = loadedProgress;
+                        inventory.Clear();
+                        if (!string.IsNullOrEmpty(data[2]))
+                        {
+                            inventory.AddRange(data[2].Split(','));
+                        }
+                        Console.WriteLine("Game loaded successfully!");
+                        Console.ReadKey();
+                        GameLoop();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Corrupted save file. Starting new game.");
+                        Console.ReadKey();
+                        StartNewGame();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Corrupted save file. Starting new game.");
+                    Console.ReadKey();
+                    StartNewGame();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while loading: {ex.Message}");
+                Console.ReadKey();
+            }
+        }
+        else
+        {
+            Console.WriteLine("No save file found.");
+            Console.ReadKey();
+        }
     }
 }
