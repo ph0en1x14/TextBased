@@ -116,7 +116,6 @@ internal class Program
             }
         }
     }
-
     //Dream 1
     static void Dream1()
     {
@@ -219,6 +218,33 @@ internal class Program
         Console.ForegroundColor = ConsoleColor.Red;
 
         string choice = Console.ReadLine();
+
+        HandleDream1Choice(choice);
+    }
+
+    //other options
+    static void HandleDream1Choice(string choice)
+    {
+        if (choice == "s")
+        {
+            //SaveGame();
+            return;
+        }
+        if (choice == "g")
+        {
+            //LoadGame();
+            return;
+        }
+        if (choice == "h")
+        {
+            Instruction();
+            return;
+        }
+        if (choice == "q")
+        {
+            gameRunning = false;
+        }
+
 
         //Senario 1
         if (dream1Progress == 0)
@@ -401,6 +427,19 @@ internal class Program
             {
                 Console.WriteLine("You don't have a knife. You can't end it here. You must continue...");
             }
+
+            //hint
+            else if (choice == "f")
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write("got that pretty and shape thing with you? you should do it.. do it.. DO IT!! - hint sponsored by ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Your dark thoughts");
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
         }
+
+        Console.ReadKey();
     }
 }
