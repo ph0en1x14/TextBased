@@ -5,6 +5,12 @@ using System.Runtime.InteropServices;
 
 internal class Program
 {
+    static string saveFile = "savegame.txt";
+    static int dreamStage = 1;
+    static int dream1Progress = 0; // New variable to track progress in Dream 1
+    static bool gameRunning = true;
+    static List<string> inventory = new List<string>();
+
     private static void Main(string[] args)
     {
         bool Running = true;
@@ -35,7 +41,7 @@ internal class Program
             {
                 case "1":
                     Instruction();
-                    //StartNewGame();
+                    StartNewGame();
                     break;
                 case "2":
                     //LoadGame();
@@ -83,4 +89,31 @@ internal class Program
         Console.ReadKey();
     }
 
+    //New game
+    static void StartNewGame()
+    {
+        dreamStage = 1;
+        dream1Progress = 0;
+        inventory.Clear();
+        GameLoop();
+    }
+
+    //Loop running dreams
+    static void GameLoop()
+    {
+        gameRunning = true;
+        while (gameRunning)
+        {
+            switch (dreamStage)
+            {
+                case 1:
+                    //Dream1();
+                    break;
+                default:
+                    Console.WriteLine("Game over or undefined stage.");
+                    gameRunning = false;
+                    break;
+            }
+        }
+    }
 }
