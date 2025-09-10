@@ -135,7 +135,7 @@ internal class Program
             Console.WriteLine("You're in an unfamiliar house.");
             Console.WriteLine("The walls are painted in many clashing bright colors...");
             Console.WriteLine("The furniture looks like it came out of a circus.");
-            Console.WriteLine("In a corner, you see a small clown horn and a pair of oversized, floppy shoes. You take them with you");
+            Console.WriteLine("In a corner, you see a small clown horn and a pair of oversized, floppy shoes. \nYou take them with you");
         }
         //Senario 2
         else if (dream1Progress == 1)
@@ -411,6 +411,7 @@ internal class Program
 
             else if (choice == "3" && inventory.Contains("Rusty Knife"))
             {
+                Console.Clear();
                 Console.WriteLine("You raise the rusty knife and plunge it into your chest. The pain is real, searing.");
                 Console.WriteLine("You stumble and fall, and the world around you dissolves into a cascade of light.");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -433,7 +434,7 @@ internal class Program
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("got that pretty and shape thing with you? you should do it.. do it.. DO IT!! - hint sponsored by ");
+                Console.Write("got that pretty and sharp thing with you? you should do it.. do it.. DO IT!! - hint sponsored by ");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Your dark thoughts");
                 Console.ForegroundColor = ConsoleColor.Gray;
